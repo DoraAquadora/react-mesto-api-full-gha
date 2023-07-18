@@ -1,0 +1,68 @@
+.auth {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 358px;
+  margin: 0 auto;
+}
+.auth__welcome {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  align-self: center;
+  margin: 20px 0 50px;
+}
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.auth__input {
+  all: unset;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #ccc;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #ccc;
+}
+.auth__input_type_password {
+  margin-top: 42px;
+}
+.auth__link-button {
+  all: unset;
+  color: #000;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 14px 0;
+  background: #fff;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-top: 186px;
+  width: 100%;
+  text-align: center;
+}
+.auth__link-button_disabled {
+  opacity: 0.2;
+  color: #000;
+  border: 1px solid #000;
+  background: #fff;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.auth__button-container {
+  display: flex;
+  justify-content: center;
+}
+.auth__signin {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+.auth__login-link {
+  all: unset;
+  cursor: pointer;
+}
