@@ -1,0 +1,27 @@
+.popup__close-button {
+  all: unset;
+  position: relative;
+  align-self: flex-end;
+  top: -18px;
+  right: -50px;
+  min-width: 32px;
+  min-height: 32px;
+  background: url(../../../images/close-button.svg) center no-repeat;
+  cursor: pointer;
+  transition: opacity .3s linear;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.popup__close-button:hover {
+  opacity: .5;
+}
+
+@media (max-width: 640px) {
+  .popup__close-button {
+    min-width: 20px;
+    min-height: 20px;
+    right: 0;
+    top: -16px;
+    background-image: url(../../../images/close-button_small.svg);
+  }
+}

@@ -1,0 +1,14 @@
+.elements__button {
+  all: unset;
+  min-width: 22px;
+  min-height: 19px;
+  background: url(../../../images/heart.svg) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transition: opacity .3s linear;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.elements__button:hover {
+  opacity: .5;
+}
