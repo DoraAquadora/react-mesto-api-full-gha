@@ -42,4 +42,8 @@ app.use((req, res, next) => next(new NotFoundError('Не найдено')));
 app.use(errors());
 app.use(errorHandler);
 
+app.get('/', (req, res) => {
+  res.send('You dead');
+});
+
 app.listen(PORT);

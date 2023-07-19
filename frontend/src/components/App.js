@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes, Navigate, useNavigate } from 'react-router-dom'
 import { CurrentUserContext } from '../contexts/CurrentUserContext'
-import { api } from '../utils/api'
 import { auth } from '../utils/auth'
 
+import Api from '../utils/api'
 import Header from './Header/Header'
 import Main from './Main/Main'
 import Footer from './Footer/Footer'
@@ -32,31 +32,35 @@ function App() {
   const [isBtnLoading, setIsBtnLoading] = useState(true)
   const [loggedIn, setLoggedIn] = useState(false)
   const [email, setEmail] = useState(null)
-
+  
   const navigate = useNavigate()
-
+  
+  const api = new Api({
+    url: 'https://api.mesto-saperov.nomoredomains.monster',
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      'Content-Type': 'application/json',
+    },
+  })
+  
   useEffect(() => {
-    handleTokenCheck()
-  }, [])
-
-  const handleTokenCheck = () => {
     if (localStorage.getItem('jwt')) {
       const jwt = localStorage.getItem('jwt')
       auth
-        .checkToken(jwt)
-        .then((res) => {
-          if (res) {
-            setLoggedIn(true)
-            setEmail(res.data.email)
+      .checkToken(jwt)
+      .then((res) => {
+        if (res) {
+          setLoggedIn(true)
+            setEmail(res.email)
             navigate('/', { replace: true })
           }
         })
         .catch((error) => {
           console.log(error)
         })
-    }
-  }
-
+      }
+    }, [])
+    
   const handleLogin = (email, password) => {
     if (!email || !password) {
       return
@@ -105,7 +109,7 @@ function App() {
         .then((res) => {
           const [initialCard, userData] = res
           setCurrentUser(userData)
-          setCards(initialCard)
+          setCards(initialCard.reverse())
           setIsLoaded(true)
         })
         .catch((error) => {
@@ -140,7 +144,6 @@ function App() {
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
     const isLiked = card.likes.some((i) => i._id === currentUser._id)
-
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
       .changeLikeCardStatus(card._id, !isLiked)
@@ -210,6 +213,7 @@ function App() {
       .then((card) => {
         setCards([card, ...cards])
         closeAllPopups()
+        navigate('/', { replace: true })
       })
       .catch((error) => {
         console.log(error)
@@ -217,6 +221,12 @@ function App() {
       .finally(() => {
         setIsBtnLoading(false)
       })
+  }
+
+  function handleOverlayClick(e) {
+    if (e.target === e.currentTarget) {
+      closeAllPopups();
+    }
   }
 
   function closeAllPopups() {
@@ -278,32 +288,37 @@ function App() {
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          onOverlay={handleOverlayClick}
           onUpdateUser={handleUpdateUser}
           isBtnLoading={isBtnLoading}
         />
         <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
+          onOverlay={handleOverlayClick}
           onUpdateAvatar={handleUpdateAvatar}
           isBtnLoading={isBtnLoading}
         />
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
+          onOverlay={handleOverlayClick}
           onAddPlace={handleAddPlaceSubmit}
           isBtnLoading={isBtnLoading}
         />
         <SubmitPopup
           isOpen={isDeleteCardPopupOpen}
           onClose={closeAllPopups}
+          onOverlay={handleOverlayClick}
           onDeleteCard={handleCardDelete}
           isBtnLoading={isBtnLoading}
           card={cardDel}
         />
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        <ImagePopup card={selectedCard} onClose={closeAllPopups} onOverlay={handleOverlayClick}/>
         <InfoTooltip
           isOpen={isTooltipPopupOpen}
           onClose={closeAllPopups}
+          onOverlay={handleOverlayClick}
           error={error}
         />
       </div>

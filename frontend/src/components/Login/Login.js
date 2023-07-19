@@ -9,7 +9,7 @@ const Login = ({ onLogin }) => {
     e.preventDefault()
     onLogin(values.email, values.password)
   }
-//  проверить токен
+
   useEffect(() => {
     setIsValid(false)
   }, [])
@@ -34,7 +34,6 @@ const Login = ({ onLogin }) => {
           value={values.email || ''}
           onChange={handleChange}
         />
-        {/* валидация */}
         <div className="popup__field">
           <span
             className={`email-input-error popup__error popup__error-field ${
@@ -56,7 +55,6 @@ const Login = ({ onLogin }) => {
           value={values.password || ''}
           onChange={handleChange}
         />
-          {/* валидация */}
         <div className="popup__field">
           <span
             className={`password-input-error popup__error popup__error-field ${

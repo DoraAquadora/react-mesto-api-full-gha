@@ -3,7 +3,7 @@ import { useFormAndValidation } from '../../hooks/useFormAndValidation'
 import PopupWithForm from '../PopupWithForm/PopupWithForm'
 import { CurrentUserContext } from '../../contexts/CurrentUserContext'
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser, isBtnLoading }) {
+function EditProfilePopup({ isOpen, onClose, onUpdateUser, isBtnLoading, onOverlay}) {
   const {
     values,
     handleChange,
@@ -50,6 +50,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isBtnLoading }) {
       isBtnLoading={isBtnLoading}
       submitBtn="Сохранение..."
       isValid={isValid}
+      onOverlay={onOverlay}
     >
       <input
         type="text"

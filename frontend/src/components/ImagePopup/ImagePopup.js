@@ -1,7 +1,7 @@
 function ImagePopup(props) {
-  const { card, onClose } = props
+  const { card, onClose, onOverlay } = props
   return (
-    <div className={`popup popup_opacity_dark ${card ? "popup_opened" : ""} `} id="popup-figure">
+    <div className={`popup popup_opacity_dark ${card ? "popup_opened" : ""} `} id="popup-figure" onMouseDown={onOverlay}>
       <figure className="popup__figure">
         <button
           type="button"

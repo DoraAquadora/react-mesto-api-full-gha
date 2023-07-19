@@ -14,7 +14,6 @@ function Main({
   isLoaded,
 }) {
   const currentUser = useContext(CurrentUserContext)
-
   return (
     <>
       {!isLoaded ? (
@@ -58,10 +57,10 @@ function Main({
             <ul className="elements__list">
               {cards.map((card) => (
                 <Card
+                  card={card}
                   onCardClick={onCardClick}
                   onCardLike={onCardLike}
                   onCardDelete={onCardDelete}
-                  card={card}
                   key={card._id}
                   name={card.name}
                   link={card.link}

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useFormAndValidation } from '../../hooks/useFormAndValidation'
 import PopupWithForm from '../PopupWithForm/PopupWithForm'
 
-function AddPlacePopup({ isOpen, onClose, onAddPlace, isBtnLoading }) {
+function AddPlacePopup({ isOpen, onClose, onAddPlace, isBtnLoading, onOverlay }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
 
@@ -34,6 +34,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isBtnLoading }) {
       isBtnLoading={isBtnLoading}
       submitBtn="Сохранение..."
       isValid={isValid}
+      onOverlay={onOverlay}
     >
       <input
         type="text"

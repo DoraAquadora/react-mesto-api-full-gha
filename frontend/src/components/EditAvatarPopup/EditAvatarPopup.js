@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useFormAndValidation } from '../../hooks/useFormAndValidation'
 import PopupWithForm from '../PopupWithForm/PopupWithForm'
 
-function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isBtnLoading }) {
+function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isBtnLoading, onOverlay }) {
   const { values, handleChange, errors, isValid, resetForm } =
     useFormAndValidation()
 
@@ -32,6 +32,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isBtnLoading }) {
       type="form_avatar"
       submitBtn="Сохранение..."
       isValid={isValid}
+      onOverlay={onOverlay}
     >
       <input
         type="url"

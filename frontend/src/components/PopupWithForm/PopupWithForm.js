@@ -5,6 +5,7 @@ function PopupWithForm(props) {
         props.isOpen ? 'popup_opened' : ''
       }`}
       id={props.id}
+      onMouseDown={props.onOverlay}
     >
       <div className="popup__figure">
         <button

@@ -1,7 +1,7 @@
 import PopupWithForm from "../PopupWithForm/PopupWithForm"
 import { useFormAndValidation } from '../../hooks/useFormAndValidation'
 
-function SubmitPopup({ isOpen, onClose, onDeleteCard, isBtnLoading, card }) {
+function SubmitPopup({ isOpen, onClose, onDeleteCard, isBtnLoading, card, onOverlay}) {
   const { isValid } =
   useFormAndValidation()
 
@@ -20,9 +20,10 @@ function SubmitPopup({ isOpen, onClose, onDeleteCard, isBtnLoading, card }) {
       type="form_delete"
       onSubmit={handleDeleteCard}
       isBtnLoading={isBtnLoading}
-      submitBtn="Сохранение..." 
+      submitBtn="Сохранение..." //по нажатию на Enter отправка именно этой формы не работает, только по клику на кнопку
       isValid={isValid}
-    ></PopupWithForm>
+      onOverlay={onOverlay}
+      ></PopupWithForm>
   )
 }
 
