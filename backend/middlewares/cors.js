@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
   const requestHeaders = req.headers['access-control-request-headers']; // сохраняем список заголовков исходного запроса
 
   if (allowedCors.includes(origin)) { // Проверяем: значение origin есть среди разрешённых доменов
-    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Origin', '*');
   }
   if (method === 'OPTIONS') { // Если это предварительный запрос, добавляем нужные заголовки
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS); // разрешаем кросс-доменные запросы любых типов (по умолчанию)
