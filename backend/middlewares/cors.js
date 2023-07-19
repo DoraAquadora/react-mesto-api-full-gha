@@ -1,8 +1,9 @@
+// Массив разешённых доменов
 const allowedCors = [
-  'https://DoraAquadora.student.nomoredomains.xyz ',
-  'http://DoraAquadora.student.nomoredomains.xyz ',
-  'https://api.DoraAquadora.students.nomoredomains.xyz ',
-  'http://api.DoraAquadora.students.nomoredomains.xyz ',
+  'https://DoraAquadora.student.nomoredomains.xyz',
+  'http://DoraAquadora.student.nomoredomains.xyz',
+  'https://api.DoraAquadora.students.nomoredomains.xyz',
+  'http://api.DoraAquadora.students.nomoredomains.xyz',
   'localhost:3000',
   'http://localhost:3000',
 ];

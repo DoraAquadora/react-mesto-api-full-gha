@@ -1,3 +1,4 @@
+/* экспортируем модель со схемой в контроллер */
 const User = require('../models/user');
 const myError = require('../errors/errors');
 

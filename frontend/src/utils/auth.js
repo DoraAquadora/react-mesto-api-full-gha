@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.mesto-saperov.nomoredomains.monster'
+export const BASE_URL = 'https://api.DoraAquadora.students.nomoredomains.xyz'
 
 class Auth {
   constructor({ url }) {

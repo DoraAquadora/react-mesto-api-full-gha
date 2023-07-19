@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
     next(new myError.AuthError(myError.AuthMsg));
   }
 
-  req.user = payload;
+  req.user = payload; // записываем пейлоуд в объект запроса
 
-  return next();
+  return next(); // пропускаем запрос дальше
 };

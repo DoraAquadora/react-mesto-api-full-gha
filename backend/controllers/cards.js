@@ -1,3 +1,4 @@
+/* экспортируем модель со схемой в контроллер */
 const Card = require('../models/card');
 const myError = require('../errors/errors');
 
@@ -12,7 +13,7 @@ const createCard = (req, res, next) => {
   Card.create({
     name: req.body.name,
     link: req.body.link,
-    owner: req.user._id,
+    owner: req.user._id, // используем req.user
   })
     .then((card) => {
       res.status(201).send(card);
@@ -48,7 +49,7 @@ const likeCard = (req, res, next) => {
 
   Card.findByIdAndUpdate(
     { _id: req.params.cardId },
-    { $addToSet: { likes: _id } },
+    { $addToSet: { likes: _id } }, // добавить _id в массив, если его там нет
     { new: true },
   )
     .populate(['owner', 'likes'])
@@ -64,7 +65,7 @@ const dislikeCard = (req, res, next) => {
 
   Card.findByIdAndUpdate(
     { _id: req.params.cardId },
-    { $pull: { likes: _id } },
+    { $pull: { likes: _id } }, // убрать _id из массива
     { new: true },
   )
     .populate(['owner', 'likes'])
