@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 62.84.113.93
 
-Frontend https://...
+Frontend https://api.DoraAquadora.students.nomoredomains.xyz
 
-Backend https://...
+Backend https://DoraAquadora.student.nomoredomains.xyz

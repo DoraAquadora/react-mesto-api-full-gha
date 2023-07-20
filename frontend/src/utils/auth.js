@@ -45,9 +45,8 @@ class Auth {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${data}`,// Authorization
+        Authorization: `Bearer ${data}`,// Authorization
       },
-      credentials: 'include' //delite
     }).then((res) => {
       return this.checkRes(res)
     })
