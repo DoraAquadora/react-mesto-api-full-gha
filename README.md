@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 62.84.113.93
+IP 62.84.113.93
 
 Frontend https://api.doraaquadora.students.nomoredomains.xyz
 
