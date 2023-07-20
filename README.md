@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/DoraAquadora/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
 IP-адрес 62.84.113.93
 
-Frontend https://api.DoraAquadora.students.nomoredomains.xyz
+Frontend https://api.doraaquadora.students.nomoredomains.xyz
 
-Backend https://DoraAquadora.student.nomoredomains.xyz
+Backend https://doraaquadora.student.nomoredomains.xyz
