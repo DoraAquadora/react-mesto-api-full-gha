@@ -51,7 +51,7 @@ function App() {
       .then((res) => {
         if (res) {
           setLoggedIn(true)
-            setEmail(res.email)
+            setEmail(res.user.email) //res.email
             navigate('/', { replace: true })
           }
         })
@@ -59,7 +59,7 @@ function App() {
           console.log(error)
         })
       }
-    }, [])
+    }, [navigate]) //delite
     
   const handleLogin = (email, password) => {
     if (!email || !password) {

@@ -30,10 +30,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
-app.use(cors({
-  origin: true,
-  credentials: true,
-}));
+app.use(cors);
 
 app.use(requestLogger); // подключаем логгер запросов до роутов
 
