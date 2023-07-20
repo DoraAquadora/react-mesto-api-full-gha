@@ -11,6 +11,6 @@
 
 IP 62.84.113.93
 
-Frontend https://api.doraaquadora.students.nomoredomains.xyz
+Frontend https://doraaquadora.student.nomoredomains.xyz
 
-Backend https://doraaquadora.student.nomoredomains.xyz
+Backend https://api.doraaquadora.students.nomoredomains.xyz
