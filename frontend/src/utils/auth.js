@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.doraAquadora.students.nomoredomains.xyz'
+export const BASE_URL = 'https://api.doraaquadora.students.nomoredomains.xyz'
 
 class Auth {
   constructor({ url }) {

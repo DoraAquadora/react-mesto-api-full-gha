@@ -36,7 +36,7 @@ function App() {
   const navigate = useNavigate()
   
   const api = new Api({
-    url: 'https://api.doraAquadora.students.nomoredomains.xyz',
+    url: 'https://api.doraaquadora.students.nomoredomains.xyz',
     headers: {
       authorization: `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json',
