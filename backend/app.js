@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(cors({
-  origin: ['https://DoraAquadora.student.nomoredomains.xyz', 'http://DoraAquadora.student.nomoredomains.xyz', 'https://api.DoraAquadora.students.nomoredomains.xyz', 'http://api.DoraAquadora.students.nomoredomains.xyz'],
+  origin: ['https://doraAquadora.student.nomoredomains.xyz', 'http://doraAquadora.student.nomoredomains.xyz', 'https://api.doraAquadora.students.nomoredomains.xyz', 'http://api.doraAquadora.students.nomoredomains.xyz'],
   credentials: true,
 }));
 
