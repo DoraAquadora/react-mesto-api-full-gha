@@ -4,7 +4,7 @@ const allowedCors = [
   'http://DoraAquadora.student.nomoredomains.xyz',
   'https://api.DoraAquadora.students.nomoredomains.xyz',
   'http://api.DoraAquadora.students.nomoredomains.xyz',
-  'localhost:3000',
+  'https://localhost:3000',
   'http://localhost:3000',
 ];
 
