@@ -28,31 +28,20 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  const { cardId } = req.params;
+  const owner = req.user._id;
 
-  Card.findById(cardId)
-    .orFail(() => {
-      throw new myError.NotFoundError(myError.NotFoundMsg);
-    })
+  Card.findByIdAndRemove({ _id: req.params.cardId })
+    .orFail(() => new myError.NotFoundError(myError.NotFoundMsg))
     .then((card) => {
-      const owner = card.owner.toString();
-      if (req.user._id === owner) {
-        Card.deleteOne(card)
-          .then(() => {
-            res.status(200).send(card);
-          })
-          .catch(next);
-      } else {
-        throw new myError.ForbiddenError(myError.ForbiddenMsg);
+      if (!card) {
+        return next(new myError.NotFoundError(myError.NotFoundMsg));
       }
+      if (card.owner.toHexString() !== (owner)) {
+        return next(new myError.ForbiddenError(myError.ForbiddenMsg));
+      }
+      return res.send({ message: 'Удалено успешно' });
     })
-    .catch((err) => {
-      if (err.name === 'CastError') {
-        next(new myError.BadRequestError(myError.BadRequestMsg));
-      } else {
-        next(err);
-      }
-    });
+    .catch(next);
 };
 
 const likeCard = (req, res, next) => {

@@ -31,10 +31,9 @@ const createUser = (req, res, next) => {
     .catch((err) => {
       if (err.code === 11000) {
         next(new myError.AlreadyExistError(myError.AlreadyExistMsg));
-      } else if (err.name === 'ValidationError') {
-        next(new myError.BadRequestError(myError.BadRequestMsg));
+      } else {
+        next(err);
       }
-      next(err);
     });
 };
 
