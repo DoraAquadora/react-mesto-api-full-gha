@@ -1,4 +1,3 @@
-/* экспортируем модель со схемой в контроллер */
 const Card = require('../models/card');
 const myError = require('../errors/errors');
 
@@ -13,7 +12,7 @@ const createCard = (req, res, next) => {
   Card.create({
     name: req.body.name,
     link: req.body.link,
-    owner: req.user._id, // используем req.user
+    owner: req.user._id,
   })
     .then((card) => {
       res.status(201).send(card);
@@ -28,12 +27,12 @@ const createCard = (req, res, next) => {
 };
 
 const deleteCard = (req, res, next) => {
-  const { cardId } = req.params;
-
-  Card.findByIdAndRemove(cardId)
-    .orFail(() => new myError.NotFoundError(myError.NotFoundMsg))
+  Card.findByIdAndRemove({ _id: req.params.cardId })
+    .orFail(() => {
+      throw new myError.NotFoundError(myError.NotFoundMsg);
+    })
     .then((card) => {
-      const owner = card.owner.toString();
+      const owner = card.owner.toHexString();
       if (req.user._id === owner) {
         Card.deleteOne(card)
           .then(() => {
@@ -41,7 +40,7 @@ const deleteCard = (req, res, next) => {
           })
           .catch(next);
       } else {
-        next(new myError.NotFoundError(myError.NotFoundMsg));
+        throw new myError.ForbiddenError(myError.ForbiddenMsg);
       }
     })
     .catch((err) => {
