@@ -46,7 +46,13 @@ const editUser = (req, res, next) => {
     { new: true, runValidators: true },
   )
     .then((user) => checkUser(user, res))
-    .catch(next);
+    .catch((err) => {
+      if (err.code === 'ValidationError') {
+        next(new myError.BadRequestError(myError.BadRequestMsg));
+      } else {
+        next(err);
+      }
+    });
 };
 
 const changeAvatar = (req, res, next) => {
