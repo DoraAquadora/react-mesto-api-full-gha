@@ -37,6 +37,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Поле "Пароль" должно быть заполнено'],
       minlength: [6, 'Минимальная длина пароля - не менее 6 символов'],
+      maxlength: [30, 'Максимальная длина поля "Пароль" - 30'],
+
       select: false,
     },
   },
