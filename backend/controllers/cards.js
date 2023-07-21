@@ -30,7 +30,7 @@ const createCard = (req, res, next) => {
 const deleteCard = (req, res, next) => {
   const { cardId } = req.params;
 
-  Card.findById(cardId)
+  Card.findByIdAndRemove(cardId)
     .orFail(() => new myError.NotFoundError(myError.NotFoundMsg))
     .then((card) => {
       const owner = card.owner.toString();
